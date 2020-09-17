@@ -4,33 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Centro Pokémon</title>
 </head>
 <body>
-    <div>
-        <h1>Bem-vind@ ao <em>Centro Pokémon</em>!</h1>
-        <p>Os melhores ítens para seu Pokémon</p>
-    </div>
+    <header>
+        <h1 class="header-text">Bem-vind@ ao <em>Centro Pokémon</em>!</h1>
+        <h3 class="header-text">Os melhores ítens para seu Pokémon</h3>
+        <img id="img" src="imgs/pokemart.jpg" alt="pokemart">
+    </header>
 
-    <div>
-        <a href="index.html">Página Inicial</a>
-        <a href="ctrl-estoque.html">Controle de Estoque</a>
-        <a href="add-produto.html">Adicionar Produto</a>
-        <a href="funcionarios.html">Funcionários</a>
-    </div>
+    <main>
+        <Button class="button"><a href="index.html">Página Inicial</a></Button>
+        <Button class="button"><a href="ctrl-estoque.html">Controle de Estoque</a></Button>
+        <Button class="button"> <a href="add-produto.html">Adicionar Produto</a></Button>
+        <Button class="button"> <a href="funcionarios.html">Funcionários</a></Button>
+    </main>
 
-    <div>
-        <!-- ADICIONAR INFORMAÇOES SOBRE SUA LOJINHA -->
-    </div>
+    <section>
+        Centro Pokémon é uma loja de conveniência que vende suprimentos necessários para sua aventura Pokémon.
+    </section>
 
-    <div>
+    <footer>
         <p>Siga-nos nas redes sociais!</p>
 
-        <div>
-            <img src="https://image.flaticon.com/icons/png/512/25/25305.png"/>
-            <img src="https://image.flaticon.com/icons/png/512/25/25425.png"/>
-            <img src="https://image.flaticon.com/icons/png/512/8/8800.png"/>
+        <div >
+            <img class="social-media" src="https://image.flaticon.com/icons/png/512/25/25305.png"/>
+            <img class="social-media" src="https://image.flaticon.com/icons/png/512/25/25425.png"/>
+            <img class="social-media" src="https://image.flaticon.com/icons/png/512/8/8800.png"/>
         </div>
-    </div>
+    </footer>
 </body>
 </html>
