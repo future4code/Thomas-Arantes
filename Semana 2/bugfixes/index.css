@@ -59,6 +59,7 @@ div img {
 
 .icone {
     height: 15px;
+    width: 15px;
 }
 
 
@@ -134,3 +135,4 @@ td button {
 #back-button:hover {
     background-color: #635a3d
 }
+
