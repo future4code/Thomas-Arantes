@@ -102,9 +102,11 @@ div:last-child {
 
 table {
     width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-text-align{
+td{
     text-align: center;
 }
 
@@ -125,6 +127,10 @@ td button {
     height: 100px;
 }
 
+.button-align{
+    text-align: center;
+    margin-top: 150px;
+}
 
 #back-button {
     background-color: white;
