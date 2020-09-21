@@ -140,3 +140,10 @@ td button {
     background-color: #635a3d
 }
 
+.buy-button:hover{
+    background-color: #b49a22
+}
+
+.buy-button:active{
+    background-color: #fdb021;
+}
