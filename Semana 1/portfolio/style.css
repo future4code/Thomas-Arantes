@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-image: url('img/car-cover.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+body{
+    background-color: #090707;
+}
+
+#img{
+    max-width: 10%;
+}
+
+#title{
+    text-align: center;
+    color: white;
+    padding: 3vw;
+    font-family: Roboto;
+}
+
+.title-text{
+    margin-top: 1vw;
+    font-family: Roboto;
+}
+
+
+#flex-container{
+    background-color: #262525;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 3vw;
+
+}
+
+.button{
+    font-family: Roboto;
+    background-color: #262525;
+    font-size: large;
+    border: 0;
+    align-content: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    font-weight: bolder;
+}
+
+a:link{
+    color: white;
+    text-decoration: none;
+}
+
+a:visited{
+    color: lightgray;
+}
+
+a:hover{
+    color: #442273;
+}
+
+
+.text1{
+    font-family: Roboto;
+    text-align: center;
+    color: white;
+    margin: 5vh;
+}
+
+.img2{
+    width: 60px;
+    height: 60px;
+    margin: 1vw;;
+    padding-bottom: 2vw;
+}
+
+#img2{
+    width: 60px;
+    height: 60px;
+    margin: 1vw;;
+}
+
+#flex-container2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 3vw;
+}
+
+.contato{
+    text-align: center;
+    font-family:Roboto;
+    font-weight: bold;
+}
+  
+.contato-submit{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    border: solid #262525;
+    font-family: roboto;  
+    font-size: 1.8vw;
+    font-weight: bold;
+    color:#262525;
+    width: 720px; 
+    height: 70px;
+  }
+
+  #mensagem{    
+    height: 300px;
+  }
+
+  #sendbutton{
+    background-color: #5B7BA6;
+  }
+
+  #flex-container3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.img3{
+    width: 500px;
+    height: 500px;
+    margin: 2vh;
+    margin-top: 6vh;
+}
+
+.img4{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
