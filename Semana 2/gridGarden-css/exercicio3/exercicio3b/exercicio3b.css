@@ -5,32 +5,84 @@ body {
     margin: 0;
     font-size: 10px;
     color: white;
+    font-size: larger;
+}
+
+#main-container{
+    display: grid;
+}
+
+#top-container{
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-columns: 1fr 4fr;
 }
 
 .green-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: green;
+    height: 70px;
 }
 
 .yellow-background {
     background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .pink-background {
+    display: flex;
     background-color: fuchsia;
+    align-items: center;
+    justify-content: center;
+    height: 650px;
+}
+
+#middle-container{
+    display: grid;
+    grid-template-columns: 4;
+    grid-template-rows: 2;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
+#content2{
+    align-items: start;
+    grid-column-start: 1/2;
 }
 
 .blue-background {
     background-color: blue;
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .red-background {
     background-color: red;
+    align-items: end;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lightgreen-background {
     background-color: lightgreen;
+    align-items: flex-end;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .purple-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
     background-color: purple;
 }
