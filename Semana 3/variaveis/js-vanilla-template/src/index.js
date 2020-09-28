@@ -45,25 +45,29 @@
 
 //Resposta Exercício 3 
 
-/*
-    let comida = prompt("Qual é sua comida favorita?")
 
-    let comidasFavoritas = ["Okonomiyaki",comida, "Tayaki", "Udon", "Karaage"]
-    console.log(comidasFavoritas) 
+    let comidasFavoritas = ["Okonomiyaki","Takoyaki", "Tayaki", "Udon", "Karaage"]
+    console.log(comidasFavoritas)
     console.log("Essas são minhas comidas favoritas:")
     console.log(comidasFavoritas[0])
     console.log(comidasFavoritas[1])
     console.log(comidasFavoritas[2])
     console.log(comidasFavoritas[3])
     console.log(comidasFavoritas[4])
-*/
+
+    comidasFavoritas[1] = prompt("Qual sua comida favorita?")
+
+    console.log(comidasFavoritas)
+
 
 //Resposta Exercício 4
 
+/*
 let filmes = ["Você assistiu Bacurau?", "Você assistiu Parasita?", "Você assistiu O Irlandês?"]
 let respostas = [true, true, false]
 console.log(filmes[0], respostas[0])
 console.log(filmes[1], respostas[1])
 console.log(filmes[2], respostas[2])
+*/
 
 
