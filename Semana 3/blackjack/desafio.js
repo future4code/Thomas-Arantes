@@ -58,6 +58,7 @@ else{
    console.log("Computador - Cartas: ", carta3.texto, carta4.texto, " - pontuação: ", resultadoComputador);
 }
 
+//Sacar mais cartas
 if(confirm("Suas cartas são " + carta1.texto + " e " + carta2.texto + " A carta revelada do computador é " + carta3.texto + "\n" + "Deseja sacar mais uma carta?")){
    cartaExtra = comprarCarta();
    cartaExtraPC = comprarCarta();
@@ -74,6 +75,7 @@ while(resultadoUsuario < 21){
    }
 }
 
+//Resultado
 alert("As cartas do computador são: " + carta3.texto + carta4.texto + cartaExtraPC.texto + cartaExtraPC1.texto)
 
 if(resultadoUsuario > resultadoComputador){
