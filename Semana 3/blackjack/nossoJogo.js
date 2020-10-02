@@ -37,6 +37,7 @@ let cartasComputador = [carta3, carta4];
 let resultadoComputador = carta3.valor + carta4.valor;
 console.log("Computador - Cartas: ", carta3.texto, carta4.texto, " - pontuação: ", resultadoComputador);
 
+//Resultado 
 
 if(resultadoUsuario > resultadoComputador){
    console.log("O usuário ganhou!");
@@ -48,3 +49,4 @@ else{
    console.log("Foi empate!")
    }
 }
+
