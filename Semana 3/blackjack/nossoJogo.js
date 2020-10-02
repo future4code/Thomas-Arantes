@@ -10,7 +10,7 @@
  * 
  * 
  */
-
+/*
  console.log("Bem vindo ao jogo de Blackjack");
 
  if(confirm("Quer iniciar uma nova rodada?")){
@@ -24,15 +24,17 @@
 function Rodada(){
 
 //Cartas do Usuário
-const carta1 = comprarCarta();
-const carta2 = comprarCarta();
-const resultadoUsuario = carta1.valor + carta2.valor;
+let carta1 = comprarCarta();
+let carta2 = comprarCarta();
+let cartasUsuário = [carta1, carta2];
+let resultadoUsuario = carta1.valor + carta2.valor;
 console.log("Usuário - Cartas: ", carta1.texto, carta2.texto, " - pontuação: ", resultadoUsuario);
 
 //Cartas do Computador
-const carta3 = comprarCarta();
-const carta4 = comprarCarta();
-const resultadoComputador = carta3.valor + carta4.valor;
+let carta3 = comprarCarta();
+let carta4 = comprarCarta();
+let cartasComputador = [carta3, carta4];
+let resultadoComputador = carta3.valor + carta4.valor;
 console.log("Computador - Cartas: ", carta3.texto, carta4.texto, " - pontuação: ", resultadoComputador);
 
 
@@ -46,3 +48,4 @@ else{
    console.log("Foi empate!")
    }
 }
+*/
