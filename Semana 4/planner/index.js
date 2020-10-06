@@ -10,28 +10,32 @@ function adicionarTarefa(){
     const sextaFeira = document.getElementById("sexta")
     const sabado = document.getElementById("sabado")
     
-    if(diaDaSemana.value === "domingo"){
-        domingo.innerHTML += `<li>${tarefaUsuario.value}</li>`
-    }
-    else if(diaDaSemana.value === "segunda"){
-        segundaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
-    }
-    else if(diaDaSemana.value === "terca"){
-        tercaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
-    }
-    else if(diaDaSemana.value === "quarta"){
-        quartaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
-    }
-    else if(diaDaSemana.value === "quinta"){
-        quintaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
-    }
-    else if(diaDaSemana.value === "sexta"){
-        sextaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
-    }
-    else{
-        sabado.innerHTML += `<li>${tarefaUsuario.value}</li>`
-    }
+    if(tarefaUsuario.value !== ""){
 
+        switch (diaDaSemana.value){
+            case "domingo" :
+                domingo.innerHTML += `<li>${tarefaUsuario.value}</li>`
+                break
+            case "segunda" :
+                segundaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
+                break
+            case "terca" :
+                tercaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
+                break
+            case "quarta" :
+                quartaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
+                break
+            case "quinta" :
+                quintaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
+                break
+            case "sexta" :
+                sextaFeira.innerHTML += `<li>${tarefaUsuario.value}</li>`
+                break
+            case "sabado" :
+                sabado.innerHTML += `<li>${tarefaUsuario.value}</li>`
+                break
+        }
+    }
     tarefaUsuario.value = ""
     
 
