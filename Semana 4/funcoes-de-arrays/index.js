@@ -31,7 +31,6 @@ function imprimirExtrato(){
     let gastoUtilidades = 0
     let gastoViagem = 0
 
-
     arrDespesas.forEach((despesa) => {
         if (despesa.tipo === "alimentação") {
           gastoAlimentacao += despesa.valor;
