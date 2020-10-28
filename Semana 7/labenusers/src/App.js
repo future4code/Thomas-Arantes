@@ -1,91 +1,30 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
+import UserListPage from './components/UserListPage/UserLIstPage'
+import FormPage from './components/FormPage/FormPage'
 
 class App extends React.Component {
   state = {
-    users: [],
-    email: [],
-    nameValue: "",
-    emailValue: "",
+    formPage: true
   }
 
-  componentDidMount = () => {
-    this.getAllUsers();
-  }
 
-  getAllUsers = () => {
-    axios.get(
-      "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",{
-        headers: {
-          Authorization: "thomas-arantes-dumont"
-        }
-      }
-    )
-    .then((response) => {
-      this.setState({ users: response.data });
-      console.log(this.state.users)
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-  };
-
-  createUser = () => {
-    const body = {
-      name:this.state.nameValue,
-      email:this.state.emailValue
-    };
-
-    axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users", body, {
-      headers: { 
-        Authorization: "thomas-arantes-dumont"
-      }  
-    }
-  )
-  .then((response) => {
-    this.setState({ nameValue: "", emailValue: "" });
-    this.getAllUsers();
-  })
-  .catch((err) => {
-    alert(err.message);
-  })
-
-  }
-
-  onChangeNameValue = (event) => {
-    this.setState({ nameValue: event.target.value})
-  }
-
-  onChangeEmailValue = (event) => {
-    this.setState({ emailValue: event.target.value})
+  changePage = () => {
+    this.setState({formPage : !this.state.formPage})
   }
   
   render (){
-    const rederendNames = this.state.users.map((user) => {
-      return <p key={user.name}> {user.name} </p>
-    })
+
+    const currentPage = this.state.formPage ? (<FormPage />) : (<UserListPage />)
     
     return (
       <div className="App">
         
         <div>
-          <p>Nome: </p>
-          <input
-              value={this.state.nameValue}
-              onChange={this.onChangeNameValue}
-          />
-          <p>Email: </p>
-          <input
-              value={this.state.emailValue}
-              onChange={this.onChangeEmailValue}
-          />
-          <button onClick={this.createUser}> Enviar </button> 
-         </div> 
-
-         <div>
-           {rederendNames}
-         </div>
+          {currentPage}
+          <button onClick={this.changePage} > Mudar de Página </button>
+        </div> 
 
       </div>
     );
