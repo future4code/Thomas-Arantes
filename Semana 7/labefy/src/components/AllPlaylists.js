@@ -1,5 +1,30 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const Buttons = styled.button`
+    margin-left: 5px;
+    background-color: #45525B;
+    color: white;
+    border: 0;
+    border-radius: 20px;
+    height: 25px;
+`
+const InputContainer = styled.div`
+    background-color: #F2A950;
+    width: 660px;
+    padding: 20px;
+    margin-top: 10px;
+`
+
+const SongsContainer = styled.div`
+    background-color: #A8BBC6;
+    width: 700px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+`
+
 
 const axiosConfig = {
     headers: {
@@ -94,37 +119,40 @@ class AllPlaylists extends React.Component{
             return(
                 <p key={playlist.id}>
                     {playlist.name}
-                    <button onClick={() => this.getPlaylistDetail(playlist.id)}> Abrir Playlist </button>
-                    <button onClick={() => this.addSongs(playlist.id)}> Adicionar Musica </button>
-                    <button onClick={() => this.deletePlaylist(playlist.id)}> Deletar Playlist </button>                   
+                    <Buttons onClick={() => this.getPlaylistDetail(playlist.id)}> Abrir Playlist </Buttons>
+                    <Buttons onClick={() => this.addSongs(playlist.id)}> Adicionar Musica </Buttons>
+                    <Buttons onClick={() => this.deletePlaylist(playlist.id)}> Deletar Playlist </Buttons>                   
                 </p>
             )
         });
 
         const renderSongs = this.state.tracksList.map((track) => {
             return(
-                <div key={track.id}>
+                <SongsContainer key={track.id}>
                     {track.name} - {track.artist}
                     <div>
                     <audio controls>
                         <source src={track.url} type="audio/mp3" />
                     </audio>
                     </div>
-                </div>
+                </SongsContainer>
             )
         })
 
         return(
             <div>
-                <h4>Playlists: </h4>        
-                {renderPlaylists}
-                <div>
+                <InputContainer>
+                    <h4>Playlists: </h4>        
+                    {renderPlaylists}
                     <h4>Adicionar Musica á uma Playlist: </h4>
                     <input placeholder="Nome" value={this.state.songName} onChange={this.onChangeName} />
                     <input placeholder="Artista" value={this.state.artist} onChange={this.onChangeArtist} />
                     <input placeholder="URL" value={this.state.url} onChange={this.onChangeUrl} />
+                    <p>Insira os dados da música que quer adicionar e entõa clique no botão "adicionar musica" em frente a playlist desejada</p>
+                    </InputContainer>
+                <div>
+                    {renderSongs}
                 </div>
-                {renderSongs}
             </div>
         )
     }

@@ -1,5 +1,28 @@
 import React from 'react'; 
 import axios from 'axios';
+import styled from 'styled-components';
+
+const CreateButton = styled.button`
+    margin-left: 5px;
+    background-color: #45525B;
+    color: white;
+    border: 0;
+    border-radius: 20px;
+    width: 150px;
+    margin-top: 10px;
+`
+
+const InputContainer = styled.div`
+    background-color: #F27405;
+    width: 700px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 20px;
+`
 
 
 const axiosConfig = {
@@ -35,12 +58,12 @@ class AddPlaylistInput extends React.Component{
 
     render () {
         return(
-            <div>
+            <InputContainer>
                 <h3>Crie uma Nova Playlist: </h3>
-                <input placeholder="Name" value={this.state.playlistName} onChange={this.onChangePlaylist}/>
-                <button onClick={this.createPlaylist}> Criar Playlist </button>
+                <input placeholder="Nome" value={this.state.playlistName} onChange={this.onChangePlaylist}/>
+                <CreateButton onClick={this.createPlaylist}> Criar Playlist </CreateButton>
                 
-            </div>
+            </InputContainer>
         )
     }
 }

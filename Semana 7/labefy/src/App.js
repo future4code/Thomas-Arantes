@@ -1,16 +1,22 @@
 import React from 'react';
 import './App.css';
 import AddPlaylistInput from './components/AddPlaylistInput';
-import AddSongs from './components/addSongs';
 import AllPlaylists from './components/AllPlaylists';
+import styled from 'styled-components';
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 class App extends React.Component {
   render () {
     return (
-      <div className="App">
+      <PageContainer className="App">
         <AddPlaylistInput />
         <AllPlaylists />
-      </div>
+      </PageContainer>
   );
   }
 }
