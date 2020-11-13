@@ -22,7 +22,6 @@ const SongsContainer = styled.div`
     width: 700px;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-bottom: 20px;
 `
 
 
