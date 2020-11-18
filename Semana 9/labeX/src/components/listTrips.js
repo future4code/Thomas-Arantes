@@ -1,10 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Header} from './styles.js'
 import {useHistory} from 'react-router-dom'
+import { useProtectedPage } from '../hooks/useProtectedPage.js'
+import axios from 'axios'
 
 const ListTrips = () => {
-  const history = useHistory(); 
+  const [trips, setTrip] = useState([])
+  useProtectedPage();
 
+  useEffect(() => {
+    getTrips();
+  }, []);
+
+  const getTrips = () => {
+    axios
+      .get(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/thomas-dumont/trips",
+        {
+          headers: {
+            auth: localStorage.getItem("token")
+          }
+        }
+        )
+        .then((response) => {
+          setTrip(response.data.trips)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  };
+
+  const history = useHistory(); 
+  
   const goToCreateTrip = () => {
       history.push("/trips/create")
   }
@@ -13,6 +40,19 @@ const ListTrips = () => {
     history.push("/trips/details")
   }
 
+  const renderTrips = trips.map((trip) => {
+    return(
+      <div key={trip.id}>
+        <p>Nome: {trip.name}</p>
+        <p>Descrição: {trip.description}</p>
+        <p>Destino: {trip.planet}</p>
+        <p>Duração: {trip.durationInDays} dias</p>
+        <p>Data: {trip.date} </p>
+        <button onClick = {goToTripDetails}> Detalhes da Viagem </button>
+      </div>
+    )
+  })
+
     return (
       <div className="App">
           <Header>
@@ -20,12 +60,7 @@ const ListTrips = () => {
               <button onClick = {goToCreateTrip}> Criar Viagens </button>
           </Header>
           <div>
-          <p>"name": "Multi luau em Jupiter",</p>
-          <p>"description": "Noite mágica, com vista para as 69 luas de Jupiter",</p>
-          <p>"planet": "Jupiter",</p>
-          <p>"durationInDays": 540,</p>
-          <p>"date": "21/12/20"</p>
-          <button onClick = {goToTripDetails}> Detalhes da Viagem </button>
+            {renderTrips}
           </div>
 
       </div>

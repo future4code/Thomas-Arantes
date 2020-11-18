@@ -1,9 +1,16 @@
 import React from 'react'
 import {Header,} from './styles.js'
 import {useHistory} from 'react-router-dom'
+import { useInput } from '../hooks/useInput.js'
 
 const ApplicationForm = () => {
+    const [name, handleName] = useInput();
+    const [age, handleAge] = useInput();
+    const [applicationText, handleApplicationText] = useInput();
+    const [job, handleJob] = useInput();
+    const [country, handleCountry] = useInput();
     const history = useHistory(); 
+    
 
     const goToLoginPage = () => {
         history.push("/login")
@@ -17,15 +24,15 @@ const ApplicationForm = () => {
           </Header>
         <div>
             <p>Nome:</p>
-            <input />
+            <input value = {name} onChange = {handleName}/>
             <p>Idade:</p>
-            <input />
+            <input value = {age} onChange = {handleAge}/>
             <p>Texto de aplicação:</p>
-            <input />
+            <input value = {applicationText} onChange = {handleApplicationText}/>
             <p>Profissão:</p>
-            <input />
+            <input value = {job} onChange = {handleJob} />
             <p>País:</p>
-            <input />
+            <input value = {country} onChange = {handleCountry} />
             <button> Enviar </button>
         </div>
       </div>
