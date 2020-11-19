@@ -72,7 +72,6 @@ const ApplicationForm = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    console.log(form)
   }
 
   console.log(selectTrip)

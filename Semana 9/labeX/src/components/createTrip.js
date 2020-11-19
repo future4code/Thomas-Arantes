@@ -20,7 +20,6 @@ const CreateTrip = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    console.log(form)
   }
 
     return (
@@ -40,7 +39,7 @@ const CreateTrip = () => {
               <p>Duração:</p>
               <input name = {"duration"} value = {duration} type = {"number"} max = {"50"} onChange = {setDuration} />
               <p>Descrição:</p>
-              <input name = {"description"} value = {description} type = {"text"} pattern = {pattern = {"[a-zA-ZsÀ-ú ]{30,}"}} onChange = {setDescription} />
+              <input name = {"description"} value = {description} type = {"text"} pattern =  {"[a-zA-ZsÀ-ú ]{30,}"} onChange = {setDescription} />
               <button> Criar Viagem </button>
             </form>
         </div>
