@@ -15,7 +15,12 @@ const CreateTrip = () => {
     const history = useHistory(); 
   
     const goToTripsList = () => {
-        history.push("/trips/list")
+      history.push("/trips/list")
+  }
+
+  const onSubmitForm = (event) => {
+    event.preventDefault();
+    console.log(form)
   }
 
     return (
@@ -25,17 +30,19 @@ const CreateTrip = () => {
               <button onClick = {goToTripsList}> Criar Viagens </button>
           </Header>
           <div>
-            <p>Nome:</p>
-            <input value = {name} onChange = {setName} />
-            <p>Data:</p>
-            <input value = {date} onChange = {setDate} />
-            <p>Destino:</p>
-            <input value = {destiny} onChange = {setDestiny} />
-            <p>Duração:</p>
-            <input value = {duration} onChange = {setDuration} />
-            <p>Descrição:</p>
-            <input  value = {description} onChange = {setDescription} />
-            <button> Criar Viagem </button>
+          <form onSubmit={onSubmitForm}> 
+              <p>Nome:</p>
+              <input name = {"name"} value = {name} type = {"text"} pattern = {"[a-zA-ZsÀ-ú ]{5,}"} onChange = {setName} required />
+              <p>Data:</p>
+              <input name = {"date"} value = {date} type = {"date"} onChange = {setDate} required />
+              <p>Destino:</p>
+              <input value = {destiny} onChange = {setDestiny} />
+              <p>Duração:</p>
+              <input name = {"duration"} value = {duration} type = {"number"} max = {"50"} onChange = {setDuration} />
+              <p>Descrição:</p>
+              <input name = {"description"} value = {description} type = {"text"} pattern = {pattern = {"[a-zA-ZsÀ-ú ]{30,}"}} onChange = {setDescription} />
+              <button> Criar Viagem </button>
+            </form>
         </div>
       </div>
     );

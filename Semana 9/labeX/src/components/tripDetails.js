@@ -7,6 +7,8 @@ import axios from  'axios'
 function TripDetails() {
   const [detail, setDetail] = useState({})
   const history = useHistory();
+  const pathParams = useParams()
+  const id = pathParams.id
   useProtectedPage();
 
   useEffect(() => {
@@ -16,13 +18,37 @@ function TripDetails() {
   const getTripDetail = () => {
     axios
       .get(
-        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/thomas-dumont/trip/$id`
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/thomas-dumont/trip/${id}`,{
+          headers: {
+            auth: localStorage.getItem("token")
+          }
+        }
       )
+      .then((response) => {
+        setDetail(response.data.trip)
+      })
+      .catch((error) => {
+        console.log(error)
+      });
   }
+
+  console.log(detail)
 
   const goBack = () => {
     history.goBack();
   }
+
+  const candidates = detail.candidates.map((candidate) => {
+    return(
+      <div key = {candidate.id}>
+        <p> Nome: {candidate.name} </p>
+        <p> Idade: {candidate.age} </p>
+        <p> País: {candidate.country} </p>
+        <p> Profissão: {candidate.profession} </p>
+        <p> Texto de aplicação: {candidate.applicationText} </p>
+      </div>
+    )
+  })
 
     return (
       <div className="App">
@@ -30,13 +56,15 @@ function TripDetails() {
               <p>Logo</p>
           </Header>
           <div>
-            <p>"id": "NoIFVcOiSgTKTIPVZwXS", </p>
-            <p>"planet": "Mercúrio", </p>
-            <p>"durationInDays": 7, </p>
-            <p>"date": "31/12/2019", </p>
-            <p>"name": "Ano novo em Mercúrio", </p>
-            <p>"description": "Venha passar a virada pertinho do Sol!",</p>
+            <p> Destino: {detail.planet} </p>
+            <p> Duração: {detail.durationInDays} dias </p>
+            <p> Data: {detail.date} </p>
+            <p> Nome: {detail.name} </p>
+            <p> Descrição: {detail.description} </p>
             <button onClick = {goBack} > Voltar </button>
+          </div>
+          <div>
+            {candidates}
           </div>
 
       </div>

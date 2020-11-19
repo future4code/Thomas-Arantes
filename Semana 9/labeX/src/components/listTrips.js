@@ -1,34 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import {Header} from './styles.js'
-import {useHistory} from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useProtectedPage } from '../hooks/useProtectedPage.js'
 import axios from 'axios'
 
-const ListTrips = () => {
-  const [trips, setTrip] = useState([])
-  useProtectedPage();
 
+const ListTrips = () => {
+  const [trips, setTrips] = useState([])
+  useProtectedPage();
+  
   useEffect(() => {
     getTrips();
   }, []);
 
   const getTrips = () => {
     axios
-      .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/thomas-dumont/trips",
-        {
-          headers: {
-            auth: localStorage.getItem("token")
-          }
-        }
+        .get(
+            "https://us-central1-labenu-apis.cloudfunctions.net/labeX/thomas-dumont/trips",
+            {
+                headers: {
+                auth: localStorage.getItem("token")
+                }
+            }
         )
         .then((response) => {
-          setTrip(response.data.trips)
+            setTrips(response.data.trips)
         })
-        .catch((error) => {
-          console.log(error);
-        });
-  };
+            .catch((error) => {
+                console.log(error);
+            })
+        }
 
   const history = useHistory(); 
   
@@ -36,8 +37,8 @@ const ListTrips = () => {
       history.push("/trips/create")
   }
 
-  const goToTripDetails = () => {
-    history.push("/trips/details")
+  const goToTripDetails = (id) => {
+    history.push(`/trips/details/${id}`)
   }
 
   const renderTrips = trips.map((trip) => {
@@ -45,13 +46,11 @@ const ListTrips = () => {
       <div key={trip.id}>
         <p>Nome: {trip.name}</p>
         <p>Descrição: {trip.description}</p>
-        <p>Destino: {trip.planet}</p>
-        <p>Duração: {trip.durationInDays} dias</p>
-        <p>Data: {trip.date} </p>
-        <button onClick = {goToTripDetails}> Detalhes da Viagem </button>
+        <button onClick = {() => {goToTripDetails(trip.id)}}> Detalhes da Viagem </button>
       </div>
     )
   })
+
 
     return (
       <div className="App">
