@@ -120,7 +120,7 @@ app.get("/user", (req, res) => {
 });
 //3.a É utilizado o QueryParams
 // Resposta 4 
-app.put("/user", (req, res) => {
+app.post("/user", (req, res) => {
     let errorCode = 400;
     try {
         const reqBody = {
@@ -141,7 +141,92 @@ app.put("/user", (req, res) => {
         res.status(errorCode).send({ message: error.message });
     }
 });
-//4.a
+//4.a Nada de diferente aconteceu em relação ao .post
+//4.b O .post tem mais vantagens, sendo quase um coeinga em relação ao put e o patch
+// Resposta 5
+app.put("/user/:id", (req, res) => {
+    let errorCode = 400;
+    try {
+        const reqBody = {
+            id: Number(req.params.id),
+            name: req.body.name
+        };
+        if (!reqBody.name) {
+            errorCode = 422;
+            throw new Error("Nome inválido. Preencha corretamente.");
+        }
+        if (isNaN(Number(reqBody.id))) {
+            errorCode = 422;
+            throw new Error("id inválido");
+        }
+        const myUserIndex = users.findIndex(((u) => u.id === Number(reqBody.id)));
+        if (myUserIndex === -1) {
+            errorCode = 404;
+            throw new Error("Usuário não encontrado, tente outros parametros.");
+        }
+        users[myUserIndex].name = reqBody.name;
+        res.status(200).send({ message: "Dados do usuário atualizados com sucesso" });
+    }
+    catch (error) {
+        res.status(errorCode).send({ message: error.message });
+    }
+});
+// Resposta 6
+app.patch("/user/:id", (req, res) => {
+    let errorCode = 400;
+    try {
+        const reqBody = {
+            id: Number(req.params.id),
+            name: req.body.name
+        };
+        if (!reqBody.name) {
+            errorCode = 422;
+            throw new Error("Nome inválido. Preencha corretamente.");
+        }
+        if (isNaN(Number(reqBody.id))) {
+            errorCode = 422;
+            throw new Error("id inválido");
+        }
+        const myUserIndex = users.findIndex(((u) => u.id === Number(reqBody.id)));
+        if (myUserIndex === -1) {
+            errorCode = 404;
+            throw new Error("Usuário não encontrado, tente outros parametros.");
+        }
+        users[myUserIndex].name = reqBody.name;
+        res.status(200).send({ message: "Dados do usuário atualizados com sucesso" });
+    }
+    catch (error) {
+        res.status(errorCode).send({ message: error.message });
+    }
+});
+// Resposta 7
+app.delete("/user/:id", (req, res) => {
+    let errorCode = 400;
+    try {
+        const reqBody = {
+            id: Number(req.params.id),
+            name: req.body.name
+        };
+        if (!reqBody.name) {
+            errorCode = 422;
+            throw new Error("Nome inválido. Preencha corretamente.");
+        }
+        if (isNaN(Number(reqBody.id))) {
+            errorCode = 422;
+            throw new Error("id inválido");
+        }
+        const myUserIndex = users.findIndex(((u) => u.id === Number(reqBody.id)));
+        if (myUserIndex === -1) {
+            errorCode = 404;
+            throw new Error("Usuário não encontrado, tente outros parametros.");
+        }
+        users[myUserIndex].name = reqBody.name;
+        res.status(200).send({ message: "Dados do usuário atualizados com sucesso" });
+    }
+    catch (error) {
+        res.status(errorCode).send({ message: error.message });
+    }
+});
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
         const address = server.address();

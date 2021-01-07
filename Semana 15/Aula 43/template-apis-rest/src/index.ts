@@ -184,26 +184,112 @@ app.post("/user", (req: Request, res: Response) => {
 
 // Resposta 5
 
-app.put("/user", (req: Request, res: Response) => {
+app.put("/user/:id", (req: Request, res: Response) => {
     let errorCode: number = 400;
 
     try {
-
-        const reqBody: user = {
-            id: Date.now(),
-            name: req.body.name,
-            email: req.body.email,
-            type: req.body.type,
-            age: req.body.age,
+        const reqBody: {id: number, name: string} = {
+            id: Number(req.params.id),
+            name: req.body.name
         }
 
-        if(!reqBody.name || !reqBody.email || !reqBody.type || !reqBody.age) {
+        if(!reqBody.name){
             errorCode = 422;
-            throw new Error("Algum campo está inválido, confira e preencha novamente.")
+            throw new Error("Nome inválido. Preencha corretamente.");
         }
 
-        users.push(reqBody);
-        res.status(200).send({message: "Usuário inserido com sucesso "})
+        if(isNaN(Number(reqBody.id))) {
+            errorCode = 422;
+            throw new Error("id inválido");
+        }
+
+        const myUserIndex = users.findIndex(((u: user) => u.id === Number(reqBody.id)))
+
+        if (myUserIndex === -1) {
+            errorCode = 404;
+            throw new Error("Usuário não encontrado, tente outros parametros.");
+        }
+
+        users[myUserIndex].name = reqBody.name;
+
+        res.status(200).send({message: "Dados do usuário atualizados com sucesso"})
+
+    }
+    catch(error) {
+        res.status(errorCode).send({message: error.message});
+    }
+})
+
+// Resposta 6
+
+app.patch("/user/:id", (req: Request, res: Response) => {
+    let errorCode: number = 400;
+
+    try {
+        const reqBody: {id: number, name: string} = {
+            id: Number(req.params.id),
+            name: req.body.name
+        }
+
+        if(!reqBody.name){
+            errorCode = 422;
+            throw new Error("Nome inválido. Preencha corretamente.");
+        }
+
+        if(isNaN(Number(reqBody.id))) {
+            errorCode = 422;
+            throw new Error("id inválido");
+        }
+
+        const myUserIndex = users.findIndex(((u: user) => u.id === Number(reqBody.id)))
+
+        if (myUserIndex === -1) {
+            errorCode = 404;
+            throw new Error("Usuário não encontrado, tente outros parametros.");
+        }
+
+        users[myUserIndex].name = reqBody.name;
+
+        res.status(200).send({message: "Dados do usuário atualizados com sucesso"})
+
+    }
+    catch(error) {
+        res.status(errorCode).send({message: error.message});
+    }
+})
+
+// Resposta 7
+
+app.delete("/user/:id", (req: Request, res: Response) => {
+    let errorCode: number = 400;
+
+    try {
+        const reqBody: {id: number, name: string} = {
+            id: Number(req.params.id),
+            name: req.body.name
+        }
+
+        if(!reqBody.name){
+            errorCode = 422;
+            throw new Error("Nome inválido. Preencha corretamente.");
+        }
+
+        if(isNaN(Number(reqBody.id))) {
+            errorCode = 422;
+            throw new Error("id inválido");
+        }
+
+        const myUserIndex = users.findIndex(((u: user) => u.id === Number(reqBody.id)))
+
+        if (myUserIndex === -1) {
+            errorCode = 404;
+            throw new Error("Usuário não encontrado, tente outros parametros.");
+        }
+
+        users[myUserIndex].name = reqBody.name;
+
+        res.status(200).send({message: "Dados do usuário atualizados com sucesso"})
+
     }
     catch(error) {
         res.status(errorCode).send({message: error.message});
