@@ -87,20 +87,33 @@ VALUES(
 
 ### Exercício 3
 
-* a) SELECT id, name, salary, birth_date from Actor WHERE gender = "female"
+* a) 
+```
+SELECT id, name, salary, birth_date from Actor 
+WHERE gender = "female"
+```
 
 * b) 
 ```
-SELECT salary from Actor WHERE name = "Tony Ramos"
+SELECT salary from Actor 
+WHERE name = "Tony Ramos"
 ```
 
-* c) 
+* c) Ele retorna uma tabela com valores Null
+```
+SELECT id, name, salary, birth_date, gender from Actor 
+WHERE gender = "invalid"
+```
 
 * d) 
 ```
 SELECT id, name, salary from Actor WHERE salary <>= 500000;
 ```
-* e) 
+* e) O erro aconteceu porque não exisitia um valor para nome e sim para name 
+```
+SELECT id, name from Actor 
+WHERE id = "002"
+```
 
 ### Exercício 4
 
@@ -125,4 +138,79 @@ SELECT * FROM Actor
 WHERE 
 (name LIKE "%G%" OR name LIKE "%g% OR name LIKE "%A%" OR name LIKE "%a%) AND salary BETWEEN 350000 AND 900000;
 ```
+
+### Exercício 5
+
+```
+CREATE TABLE Movie(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) UNIQUE NOT NULL,
+    synopsis TEXT NOT NULL,
+    release_date DATE NOT NULL,
+    score INT NOT NULL
+);
+
+-------------------------------------------------------
+
+INSERT INTO Movie
+		(name, synopsis, release_date, score)
+VALUES 
+	("Se Eu Fosse Você", "Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos", "2006-01-06", 7),
+    ("Doce de Mãe", "Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões. A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela", "2012-12-27", 10),
+    ("Dona Flor e Seus Dois Maridos", "Dona Flor é uma sedutora professora de culinária casada com Vadinho, que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce.", "2017-11-02", 8),
+    ("Bacurau", "Os moradores de Bacurau, um pequeno povoado do sertão brasileiro, descobrem que a comunidade não consta mais em qualquer mapa. Aos poucos, eles percebem algo estranho na região: enquanto drones passeiam pelos céus, estrangeiros chegam à cidade. Quando carros são baleados e cadáveres começam a aparecer, Teresa, Domingas, Acácio, Plínio, Lunga e outros habitantes chegam à conclusão de que estão sendo atacados. Agora, o grupo precisa identificar o inimigo e criar coletivamente um meio de defesa.", "2019-08-23", 10 )
+```
+
+### Exercício 6 
+
+* a)
+```
+SELECT id, name, score 
+FROM Movie
+WHERE id="4";
+```
+
+* b)
+
+```
+SELECT name 
+FROM Movie
+WHERE name ="Bacurau" ;
+```
+
+* c)
+```
+SELECT id, name, synopsis
+FROM Movie 
+WHERE score > 7;
+```
+
+### Exercício 7 
+
+* a)
+```
+SELECT * FROM Movie 
+WHERE name LIKE "%vida%";
+```
+
+* b) 
+```
+SELECT * FROM Movie
+WHERE name LIKE "%povoado%" OR 
+synopsis LIKE "%povoado%";
+```
+* c)
+```
+SELECT * FROM Movie
+WHERE release_date < "2021-01-11";
+```
+* d)
+```
+SELECT * FROM Movie
+WHERE release_date < "2021-01-11" AND 
+(name LIKE "%povoado%" OR synopsis LIKE "%povoado%") AND score > 7;
+
+```
+
+
 
