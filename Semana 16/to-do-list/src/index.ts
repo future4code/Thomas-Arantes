@@ -2,6 +2,7 @@ import express, {Express, Request, Response} from 'express'
 import cors from 'cors'
 import knex from "knex";
 import { AddressInfo } from "net";
+import createUser from "./endpoints/createUser"
 
 const app: Express = express();
 
@@ -9,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 
-const connection = knex({
+export const connection = knex({
   client: "mysql",
   connection: {
     host: process.env.DB_HOST,
@@ -29,28 +30,30 @@ type user = {
 
 const users: user[] = []
 
-app.post("/users/new", async (req: Request, res: Response) => {
-  let errorCode: number = 400;
-    try {
-        const reqBody: user = {
-          id: Date.now() as unknown as string,
-          name: req.body.name,
-          nickname: req.body.nickname,
-          email: req.body.email
-        }
+app.post("/user", createUser)
 
-        if(!reqBody.name || !reqBody.nickname || !reqBody.email){
-          errorCode = 422
-          throw new Error("Algum dado está inválido, preencha novamente!")
-        }
+// app.post("/users/new", async (req: Request, res: Response) => {
+//   let errorCode: number = 400;
+//     try {
+//         const reqBody: user = {
+//           id: Date.now() as unknown as string,
+//           name: req.body.name,
+//           nickname: req.body.nickname,
+//           email: req.body.email
+//         }
 
-        users.push(reqBody);
-        res.status(200).send("Usuário criado com sucesso")
-    } 
-    catch(error) {
-      res.status(errorCode).send({message: error.message})
-    }
-})
+//         if(!reqBody.name || !reqBody.nickname || !reqBody.email){
+//           errorCode = 422
+//           throw new Error("Algum dado está inválido, preencha novamente!")
+//         }
+
+//         users.push(reqBody);
+//         res.status(200).send("Usuário criado com sucesso")
+//     } 
+//     catch(error) {
+//       res.status(errorCode).send({message: error.message})
+//     }
+// })
 
 app.get("/users/:id", (req: Request, res: Response) => {
   let errorCode: number = 400;
@@ -67,6 +70,7 @@ app.get("/users/:id", (req: Request, res: Response) => {
     const result = myUser
     res.status(200).send(myUser)
   }
+  
   catch(error){
     errorCode = 422;
             throw new Error("ID Inválida, tente novamente");
