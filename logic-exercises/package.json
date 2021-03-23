@@ -1,0 +1,10 @@
+{
+   "name": "template-estrutura-de-dados",
+   "version": "1.0.0",
+   "main": "index.js",
+   "scripts": {
+      "missing-number": "tsc && node ./build/numero-faltante"
+   },
+   "author": "Thomas",
+   "license": "ISC"
+}
