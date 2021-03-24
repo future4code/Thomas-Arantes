@@ -4,7 +4,8 @@
    "main": "index.js",
    "scripts": {
       "missing-number": "tsc && node ./build/numero-faltante",
-      "index-of": "tsc && node ./build/indexOf"
+      "index-of": "tsc && node ./build/indexOf",
+      "parentheses-check": "tsc && node ./build/parenthesesCheck"
    },
    "author": "Thomas",
    "license": "ISC"
