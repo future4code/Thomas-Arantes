@@ -3,7 +3,8 @@
    "version": "1.0.0",
    "main": "index.js",
    "scripts": {
-      "missing-number": "tsc && node ./build/numero-faltante"
+      "missing-number": "tsc && node ./build/numero-faltante",
+      "index-of": "tsc && node ./build/indexOf"
    },
    "author": "Thomas",
    "license": "ISC"
