@@ -5,7 +5,8 @@
    "scripts": {
       "missing-number": "tsc && node ./build/numero-faltante",
       "index-of": "tsc && node ./build/indexOf",
-      "parentheses-check": "tsc && node ./build/parenthesesCheck"
+      "parentheses-check": "tsc && node ./build/parenthesesCheck",
+      "longestCommon": "tsc && node ./build/longestCommon"
    },
    "author": "Thomas",
    "license": "ISC"
