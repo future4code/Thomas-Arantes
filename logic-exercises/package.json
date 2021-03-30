@@ -6,7 +6,8 @@
       "missing-number": "tsc && node ./build/numero-faltante",
       "index-of": "tsc && node ./build/indexOf",
       "parentheses-check": "tsc && node ./build/parenthesesCheck",
-      "longestCommon": "tsc && node ./build/longestCommon"
+      "longestCommon": "tsc && node ./build/longestCommon",
+      "anagram": "tsc && node ./build/anagram"
    },
    "author": "Thomas",
    "license": "ISC"
